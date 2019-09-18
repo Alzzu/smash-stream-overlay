@@ -1,0 +1,133 @@
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+}
+
+.layout {
+  font-family: 'Mukta', Helvetica, Arial, sans-serif;
+  height: 100vh;
+  width: 100%;
+  background: url('../img/ultileiska.png');
+}
+
+.player1 {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  top: 35px;
+  left: 472px;
+}
+
+.player1Info {
+  position: absolute;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  left: 55px;
+}
+
+.player1 .name {
+  display: flex;
+  text-align: left;
+  font-size: 1.6em;
+  margin-left: 0.3em;
+  white-space: nowrap;
+  flex-direction: column;
+  line-height: 27px;
+}
+.player1 .name .subname {
+  margin-right: 0.3em;
+}
+
+.player1 .score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 30px;
+  font-size: 2em;
+  margin-right: 0.7em;
+}
+
+.player1 .character {
+  font-size: 2em;
+}
+
+.player2 {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  top: 35px;
+  right: 472px;
+}
+.player2Info {
+  position: absolute;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  right: 55px;
+}
+.player2 .name {
+  display: flex;
+  text-align: right;
+  font-size: 1.6em;
+  margin-right: 0.3em;
+  white-space: nowrap;
+  flex-direction: column;
+  line-height: 27px;
+}
+
+.player2 .name .subname {
+  margin-left: 0.3em;
+}
+
+.player2 .score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  width: 30px;
+  font-size: 2em;
+  margin-left: 0.7em;
+}
+
+.player2 .character {
+  font-size: 2em;
+}
+
+.players {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50vw;
+  margin: 0 auto;
+}
+
+img {
+  width: 48px;
+  height: 48px;
+}
+
+.phase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  position: absolute;
+  width: 258px;
+  height: 42px;
+  top: 133px;
+  left: 830px;
+  font-size: 1.4em;
+  font-weight: 500;
+  text-align: center;
+}

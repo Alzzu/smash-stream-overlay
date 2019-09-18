@@ -1,0 +1,9 @@
+{
+  "name": "@bunkkeri-smash-overlay/overlays",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "vue-socket.io": "^3.0.7"
+  }
+}
