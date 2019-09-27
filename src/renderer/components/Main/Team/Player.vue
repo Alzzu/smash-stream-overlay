@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="player">
     <Character :char="player.character" @changeChar="changeCharacter" />
     <sui-dropdown
       :options="this.$store.getters.playersList"
@@ -46,4 +46,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.player {
+  margin-bottom: 1rem;
+}
 </style>

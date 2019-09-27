@@ -13,7 +13,6 @@ io.on('connection', socket => {
   })
 
   socket.on('playerData', msg => {
-    console.log(msg)
     store.dispatch('setCurrentData', msg)
     socket.broadcast.emit('info', msg)
   })
@@ -35,7 +34,6 @@ io.on('connection', socket => {
 
   socket.on('getEventEntrants', async () => {
     const data = await eventEntrants(store.state.General.selectedEvent)
-    console.log(data)
     socket.emit('eventAttendees', data)
   })
 })

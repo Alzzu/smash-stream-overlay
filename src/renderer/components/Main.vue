@@ -14,6 +14,9 @@
     <sui-segment basic aligned="center">
       <Phase :phase="phase" @changePhase="changePhase" />
     </sui-segment>
+    <sui-segment basic>
+      <Toggles @update:disableIcons="changeDisableIcon" />
+    </sui-segment>
     <sui-segment basic aligned="center">
       <sui-button @click="playerData" positive>Update</sui-button>
       <sui-button @click="resetScore">Reset score</sui-button>
@@ -24,10 +27,11 @@
 <script>
 import Team from './Main/Team'
 import Phase from './Main/Phase'
+import Toggles from './Main/Toggles'
 
 export default {
   name: 'main',
-  components: { Team, Phase },
+  components: { Team, Phase, Toggles },
   data: () => {
     return {
       phase: 'Winners Round 2',
@@ -50,7 +54,8 @@ export default {
           }
         ],
         state: 'none'
-      }
+      },
+      disableIcons: false
     }
   },
   beforeMount() {
@@ -71,7 +76,8 @@ export default {
       this.$socket.emit('playerData', {
         team1: this.team1,
         team2: this.team2,
-        phase: this.phase
+        phase: this.phase,
+        disableIcons: this.disableIcons
       })
     },
     changePhase: function(phase) {
@@ -80,6 +86,9 @@ export default {
     resetScore: function() {
       this.team1.score = 0
       this.team2.score = 0
+    },
+    changeDisableIcon: function(disable) {
+      this.disableIcons = disable
     }
   },
   sockets: {

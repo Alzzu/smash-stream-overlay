@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="score">
     <sui-button-group>
       <sui-button @click="$emit('scoreMinus')" icon="minus" />
       <sui-button>{{score}}</sui-button>
@@ -16,4 +16,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.score {
+  margin-bottom: 1rem;
+}
 </style>

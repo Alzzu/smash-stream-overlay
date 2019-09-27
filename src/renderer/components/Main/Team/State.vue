@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <sui-button-group>
     <sui-button @click="changeState" :class="{'active':(selected === 'none')}">None</sui-button>
     <sui-button @click="changeState" :class="{'active':(selected === 'losers')}">L</sui-button>
     <sui-button @click="changeState" :class="{'active':(selected === 'winners')}">W</sui-button>
-  </div>
+  </sui-button-group>
 </template>
 
 <script>
