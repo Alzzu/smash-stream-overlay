@@ -1,24 +1,6 @@
 /* eslint-disable space-before-function-paren */
 import store from '../../renderer/store'
 import axios from 'axios'
-const smashgg = require('smashgg.js')
-
-if (store.state.Settings.settings.apiKey) {
-  if (store.state.Settings.settings.apiKey.length >= 32) {
-    smashgg.initialize(store.state.Settings.settings.apiKey)
-  }
-}
-
-export const test = () => {
-  return store.state.Settings.settings.apiKey
-}
-
-export const test2 = async () => {
-  const { Tournament } = smashgg
-  const asd = await Tournament.get('bunkkeri-smash-weekly-5')
-  console.log(asd)
-  return asd
-}
 
 export const tournamentInfo = async slug => {
   const data = await axios({
@@ -138,20 +120,4 @@ export const eventEntrants = async id => {
     })
 
   return data
-}
-
-export const eventAttendeesList = async (slug, event) => {
-  const { Event } = smashgg
-  const data = await Event.get(slug, event)
-  const attendees = await data.getAttendees()
-
-  let list = []
-
-  attendees.map(attendee => {
-    list.push({
-      value: { gamerTag: attendee.gamerTag, prefix: attendee.prefix },
-      text: attendee.gamerTag
-    })
-  })
-  return list
 }
