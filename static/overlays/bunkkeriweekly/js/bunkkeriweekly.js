@@ -1,7 +1,7 @@
 Vue.use(
   new VueSocketIO({
     debug: false,
-    connection: 'localhost:1234/'
+    connection: 'loota:1234/'
   })
 )
 
@@ -71,7 +71,7 @@ var vm = new Vue({
   sockets: {
     connect: function() {
       console.log('connected to socket')
-      // this.$socket.emit('giveInfo')
+      this.$socket.emit('giveInfo')
     },
     info: function(msg) {
       this.phase = msg.phase

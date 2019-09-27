@@ -6,12 +6,22 @@
         <label>Tournament Slug</label>
         <sui-input v-model="tournamentSlug" />
       </div>
+      <div class="section">
+        <label>Tournament Events</label>
+        <sui-dropdown
+          search
+          selection
+          fluid
+          :options="this.$store.getters.tournamentEvents"
+          v-model="selectedEvent"
+        ></sui-dropdown>
+      </div>
       <sui-button v-on:click="getTournamentInfo">Get tournament info</sui-button>
     </div>
-    <div v-if="this.$store.state.General.tournamentInfo">
+    <div v-if="this.$store.state.General.tournamentInfo.name">
       <span>{{ this.$store.state.General.tournamentInfo.name }}</span>
-      <span>{{ this.$store.state.General.tournamentInfo.startTime }}</span>
-      <span>{{ this.$store.state.General.tournamentInfo.venue.name }}</span>
+      <span>{{ this.$store.state.General.tournamentInfo.startAt }}</span>
+      <span>{{ this.$store.state.General.tournamentInfo.venueName }}</span>
     </div>
   </div>
 </template>
@@ -21,11 +31,13 @@ export default {
   name: 'tournament',
   data: () => {
     return {
-      tournamentSlug: ''
+      tournamentSlug: '',
+      selectedEvent: null
     }
   },
   beforeMount() {
     this.tournamentSlug = this.$store.state.General.tournamentSlug
+    this.selectedEvent = this.$store.state.General.selectedEvent
   },
   methods: {
     getTournamentInfo: function() {
@@ -42,6 +54,9 @@ export default {
   watch: {
     tournamentSlug: function(newValue, oldValue) {
       this.$store.dispatch('changeTournamentSlug', newValue)
+    },
+    selectedEvent: function(newValue, oldValue) {
+      this.$store.dispatch('changeSelectedEvent', newValue)
     }
   }
 }

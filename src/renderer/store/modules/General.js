@@ -3,7 +3,8 @@ const state = {
   players: [],
   tournamentSlug: 'bunkkeri-smash-weekly-5',
   tournamentInfo: null,
-  events: null
+  events: null,
+  selectedEvent: null
 }
 
 const mutations = {
@@ -21,6 +22,9 @@ const mutations = {
   },
   setCurrentData(state, data) {
     state.currentData = data
+  },
+  setSelectedEvent(state, data) {
+    state.selectedEvent = data
   }
 }
 
@@ -37,13 +41,32 @@ const actions = {
   changeTournamentSlug({ commit }, data) {
     commit('setTournamentSlug', data)
   },
+  changeSelectedEvent({ commit }, data) {
+    commit('setSelectedEvent', data)
+  },
   setCurrentData({ commit }, data) {
     commit('setCurrentData', data)
+  }
+}
+
+const getters = {
+  tournamentEvents: state => {
+    return state.tournamentInfo.events.map(event => ({
+      text: event.name,
+      value: event.id
+    }))
+  },
+  playersList: state => {
+    return state.players.map(player => ({
+      value: player.gamerTag,
+      text: player.gamerTag
+    }))
   }
 }
 
 export default {
   state,
   mutations,
-  actions
+  actions,
+  getters
 }

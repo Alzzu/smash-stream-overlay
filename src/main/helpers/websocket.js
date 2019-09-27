@@ -4,8 +4,8 @@ import {
   test2,
   tournamentInfo,
   tournamentEvents,
-  eventAttendees,
-  eventAttendeesList
+  eventAttendeesList,
+  eventEntrants
 } from './smashgg'
 
 const io = require('socket.io')(1234)
@@ -24,6 +24,11 @@ io.on('connection', socket => {
     socket.broadcast.emit('info', msg)
   })
 
+  socket.on('giveInfo', async () => {
+    const data = store.state.General.currentData
+    socket.emit('info', data)
+  })
+
   socket.on('test', async () => {
     const data = await test2()
     socket.emit('testdata', data)
@@ -39,8 +44,9 @@ io.on('connection', socket => {
     socket.emit('tournamentEvents', data)
   })
 
-  socket.on('getEventAttendees', async msg => {
-    const data = await eventAttendees(msg.slug, msg.event)
+  socket.on('getEventEntrants', async () => {
+    const data = await eventEntrants(store.state.General.selectedEvent)
+    console.log(data)
     socket.emit('eventAttendees', data)
   })
 

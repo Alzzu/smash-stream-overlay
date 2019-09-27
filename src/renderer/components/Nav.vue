@@ -1,6 +1,6 @@
 <template>
   <div class="nav">
-    <router-link class="link" to="/">Main</router-link>
+    <router-link class="link" to="/">Edit</router-link>
     <router-link class="link" to="/tournament">Tournament</router-link>
     <router-link class="link" to="/settings">Settings</router-link>
   </div>
@@ -19,9 +19,13 @@ export default {
   justify-content: space-evenly;
 
   .link {
+    width: 100%;
+    padding: 5px;
+    text-align: center;
   }
   .router-link-exact-active {
-    color: red;
+    color: white;
+    background: rgb(56, 56, 56);
   }
 }
 </style>

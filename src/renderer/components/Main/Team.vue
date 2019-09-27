@@ -2,16 +2,18 @@
   <div class="team">
     <Score :score="teamData.score" @scorePlus="plus" @scoreMinus="minus" />
     <Player :team="team" :player="teamData.players[0]" @update:name="updateName" />
+    <State :state="teamData.state" @update:state="updateState" />
   </div>
 </template>
 
 <script>
 import Player from './Team/Player'
 import Score from './Team/Score'
+import State from './Team/State'
 
 export default {
   name: 'team',
-  components: { Player, Score },
+  components: { Player, Score, State },
   props: ['team', 'teamData'],
   methods: {
     plus: function() {
@@ -22,6 +24,9 @@ export default {
     },
     updateName: function(data) {
       this.teamData.player[0].name = data.name
+    },
+    updateState: function(value) {
+      this.teamData.state = value
     }
   }
 }

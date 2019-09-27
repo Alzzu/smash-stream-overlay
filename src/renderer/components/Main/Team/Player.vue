@@ -2,7 +2,7 @@
   <div>
     <Character :char="player.character" @changeChar="changeCharacter" />
     <sui-dropdown
-      :options="this.$store.state.General.players.list"
+      :options="this.$store.getters.playersList"
       placeholder="Select character"
       search
       selection
@@ -36,7 +36,7 @@ export default {
   },
   watch: {
     selectedPlayer: function(newPlayer, oldPlayer) {
-      const player = this.$store.state.General.players.list2.filter(
+      const player = this.$store.state.General.players.filter(
         player => player.gamerTag === newPlayer
       )
       this.player.name = player[0]

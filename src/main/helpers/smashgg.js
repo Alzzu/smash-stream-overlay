@@ -21,9 +21,39 @@ export const test2 = async () => {
 }
 
 export const tournamentInfo = async slug => {
-  const { Tournament } = smashgg
-  const info = await Tournament.get(slug)
-  return info
+  const data = await axios({
+    url: 'https://api.smash.gg/gql/alpha',
+    method: 'post',
+    headers: {
+      Authorization: `Bearer ${store.state.Settings.settings.apiKey}`
+    },
+    data: {
+      query: `
+        query TournamentEvents($tourneySlug:String!){
+          tournament(slug:$tourneySlug){
+            name
+            slug
+            startAt
+            endAt
+            venueName
+            events {
+              id
+              name
+            }
+          }
+        }
+    `,
+      variables: {
+        tourneySlug: `tournament/${slug}`
+      }
+    }
+  })
+    .then(result => result.data.data)
+    .catch(e => {
+      console.error(e)
+    })
+  console.log(data)
+  return data.tournament
 }
 export const tournamentEvents = async slug => {
   console.log(slug)
@@ -31,7 +61,7 @@ export const tournamentEvents = async slug => {
     url: 'https://api.smash.gg/gql/alpha',
     method: 'post',
     headers: {
-      Authorization: `Bearer 4753ebcb4dcc248d0ffb1cb28433f98e`
+      Authorization: `Bearer ${store.state.Settings.settings.apiKey}`
     },
     data: {
       query: `
@@ -59,22 +89,55 @@ export const tournamentEvents = async slug => {
   return data
 }
 
-export const eventAttendees = async (slug, event) => {
-  const { Event } = smashgg
-  const data = await Event.get(slug, event)
-  const attendees = await data.getAttendees()
-
-  let list = []
-  let list2 = []
-
-  attendees.map(attendee => {
-    list.push({
-      value: attendee.gamerTag,
-      text: attendee.gamerTag
-    })
-    list2.push({ gamerTag: attendee.gamerTag, prefix: attendee.prefix })
+export const eventEntrants = async id => {
+  const data = await axios({
+    url: 'https://api.smash.gg/gql/alpha',
+    method: 'post',
+    headers: {
+      Authorization: `Bearer ${store.state.Settings.settings.apiKey}`
+    },
+    data: {
+      query: `
+        query EventEntrants($eventId: ID!){
+          event(id:$eventId){
+            name
+            entrants {
+              nodes{
+                id
+                participants{
+                  id
+                  gamerTag
+                  prefix
+                  createdAt
+                  contactInfo {
+                    id
+                    country
+                    name
+                    nameFirst
+                    nameLast
+                  }
+                }
+              }
+            }
+          }
+        }
+      `,
+      variables: {
+        eventId: id
+      }
+    }
   })
-  return { attendees, list, list2 }
+    .then(result => result.data.data.event.entrants.nodes)
+    .then(nodes =>
+      nodes.map(entrant => ({
+        ...entrant.participants[0]
+      }))
+    )
+    .catch(e => {
+      console.error(e)
+    })
+
+  return data
 }
 
 export const eventAttendeesList = async (slug, event) => {
