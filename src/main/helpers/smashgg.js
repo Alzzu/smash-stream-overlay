@@ -34,7 +34,6 @@ export const tournamentInfo = async slug => {
     .catch(e => {
       console.error(e)
     })
-  console.log(data)
   return data.tournament
 }
 export const tournamentEvents = async slug => {
@@ -115,6 +114,58 @@ export const eventEntrants = async id => {
         ...entrant.participants[0]
       }))
     )
+    .catch(e => {
+      console.error(e)
+    })
+
+  return data
+}
+
+export const streamQueue = async slug => {
+  const data = await axios({
+    url: 'https://api.smash.gg/gql/alpha',
+    method: 'post',
+    headers: {
+      Authorization: `Bearer ${store.state.Settings.settings.apiKey}`
+    },
+    data: {
+      query: `
+        query StreamQueueOnTournament($tourneySlug: String!){
+          tournament(slug:$tourneySlug) {
+            streamQueue {
+              stream {
+                streamSource
+                streamName
+              }
+              sets {
+                id
+                fullRoundText
+                event {
+                  id
+                  name
+                }
+                slots {
+                  id
+                  entrant {
+                    id
+                    participants {
+                      id
+                      gamerTag
+                      prefix
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      `,
+      variables: {
+        tourneySlug: slug
+      }
+    }
+  })
+    .then(result => result.data.data.tournament.streamQueue)
     .catch(e => {
       console.error(e)
     })

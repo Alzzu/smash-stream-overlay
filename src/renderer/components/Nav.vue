@@ -1,6 +1,7 @@
 <template>
   <div class="nav">
     <router-link class="link" to="/">Edit</router-link>
+    <router-link class="link" to="/queue">Stream queue</router-link>
     <router-link class="link" to="/tournament">Tournament</router-link>
     <router-link class="link" to="/settings">Settings</router-link>
   </div>

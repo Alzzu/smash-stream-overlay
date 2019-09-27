@@ -1,6 +1,11 @@
 /* eslint-disable space-before-function-paren */
 import store from '../../renderer/store'
-import { tournamentInfo, tournamentEvents, eventEntrants } from './smashgg'
+import {
+  tournamentInfo,
+  tournamentEvents,
+  eventEntrants,
+  streamQueue
+} from './smashgg'
 
 const io = require('socket.io')(1234)
 
@@ -8,7 +13,6 @@ io.on('connection', socket => {
   console.log('connected')
 
   socket.on('emitTest2', msg => {
-    console.log('msg')
     socket.broadcast.emit('test', msg)
   })
 
@@ -35,5 +39,10 @@ io.on('connection', socket => {
   socket.on('getEventEntrants', async () => {
     const data = await eventEntrants(store.state.General.selectedEvent)
     socket.emit('eventAttendees', data)
+  })
+
+  socket.on('getTournamentStreamQueue', async () => {
+    const data = await streamQueue(store.state.General.tournamentSlug)
+    socket.emit('streamQueue', data)
   })
 })

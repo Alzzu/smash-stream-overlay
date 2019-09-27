@@ -14,8 +14,8 @@
     <sui-segment basic aligned="center">
       <Phase :phase="phase" @changePhase="changePhase" />
     </sui-segment>
-    <sui-segment basic>
-      <Toggles @update:disableIcons="changeDisableIcon" />
+    <sui-segment basic aligned="center">
+      <Toggles @update:disableIcons="changeDisableIcon" :disableIcons="disableIcons" />
     </sui-segment>
     <sui-segment basic aligned="center">
       <sui-button @click="playerData" positive>Update</sui-button>
@@ -59,9 +59,11 @@ export default {
     }
   },
   beforeMount() {
-    this.team1 = this.$store.state.General.currentData.team1
-    this.team2 = this.$store.state.General.currentData.team2
-    this.phase = this.$store.state.General.currentData.phase
+    const currentData = this.$store.getters.currentData
+    this.disableIcons = currentData.disableIcons
+    this.team1 = currentData.team1
+    this.team2 = currentData.team2
+    this.phase = currentData.phase
     this.$socket.emit('getEventEntrants')
   },
   methods: {

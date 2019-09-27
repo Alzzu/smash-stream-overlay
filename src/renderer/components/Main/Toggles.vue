@@ -7,8 +7,12 @@
 <script>
 export default {
   name: 'toggles',
+  props: ['disableIcons'],
   data() {
     return { disabled: false }
+  },
+  beforeMount() {
+    this.disabled = this.disableIcons
   },
   watch: {
     disabled: function(newValue, oldValue) {

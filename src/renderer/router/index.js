@@ -11,6 +11,11 @@ export default new Router({
       component: require('@/components/Main').default
     },
     {
+      path: '/queue',
+      name: 'stream-queue',
+      component: require('@/components/Queue').default
+    },
+    {
       path: '/tournament',
       name: 'tournament-settings',
       component: require('@/components/Tournament').default

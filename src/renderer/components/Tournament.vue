@@ -6,6 +6,7 @@
         <label>Tournament Slug</label>
         <sui-input v-model="tournamentSlug" />
       </div>
+      <sui-button v-on:click="getTournamentInfo">Get tournament info</sui-button>
       <div class="section">
         <label>Tournament Events</label>
         <sui-dropdown
@@ -16,7 +17,6 @@
           v-model="selectedEvent"
         ></sui-dropdown>
       </div>
-      <sui-button v-on:click="getTournamentInfo">Get tournament info</sui-button>
     </div>
     <div v-if="this.$store.state.General.tournamentInfo.name">
       <span>{{ this.$store.state.General.tournamentInfo.name }}</span>
