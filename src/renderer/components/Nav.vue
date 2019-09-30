@@ -19,6 +19,8 @@ export default {
   flex-direction: row;
   justify-content: space-evenly;
 
+  border-bottom: 2px rgb(207, 207, 207) solid;
+
   .link {
     width: 100%;
     padding: 5px;

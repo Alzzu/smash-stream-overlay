@@ -1,7 +1,7 @@
 Vue.use(
   new VueSocketIO({
     debug: false,
-    connection: 'loota:1234/'
+    connection: 'localhost:1234/'
   })
 )
 

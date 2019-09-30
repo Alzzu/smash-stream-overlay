@@ -85,32 +85,71 @@ const actions = {
 
 const getters = {
   currentData: state => {
-    return state.currentData
+    if (state.currentData === null) {
+      return {
+        phase: '',
+        team1: {
+          score: 0,
+          players: [
+            {
+              name: { gamerTag: '', prefix: null },
+              character: 'Mario'
+            }
+          ],
+          state: 'none'
+        },
+        team2: {
+          score: 0,
+          players: [
+            {
+              name: { gamerTag: '', prefix: null },
+              character: 'Mario'
+            }
+          ],
+          state: 'none'
+        },
+        disableIcons: false
+      }
+    } else {
+      return state.currentData
+    }
   },
   tournamentEvents: state => {
-    return state.tournamentInfo.events.map(event => ({
-      text: event.name,
-      value: event.id
-    }))
+    try {
+      return state.tournamentInfo.events.map(event => ({
+        text: event.name,
+        value: event.id
+      }))
+    } catch (err) {
+      return null
+    }
   },
   playersList: state => {
-    return state.players.map(player => ({
-      value: player.gamerTag,
-      text: player.gamerTag
-    }))
+    try {
+      return state.players.map(player => ({
+        value: player.gamerTag,
+        text: player.gamerTag
+      }))
+    } catch (err) {
+      return null
+    }
   },
   streamQueue: state => {
-    return state.streamQueue.map(queue => ({
-      stream: queue.stream.streamName,
-      sets: queue.sets.map(set => ({
-        ...set,
-        slots: set.slots.map(slot => ({
-          entrants: slot.entrant.participants.map(participant => ({
-            ...participant
+    try {
+      return state.streamQueue.map(queue => ({
+        stream: queue.stream.streamName,
+        sets: queue.sets.map(set => ({
+          ...set,
+          slots: set.slots.map(slot => ({
+            entrants: slot.entrant.participants.map(participant => ({
+              ...participant
+            }))
           }))
         }))
       }))
-    }))
+    } catch (err) {
+      return null
+    }
   }
 }
 

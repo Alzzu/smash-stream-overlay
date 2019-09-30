@@ -35,7 +35,6 @@ function createWindow() {
       nodeIntegration: true // add this
     }
   })
-
   mainWindow.loadURL(winURL)
 
   mainWindow.on('closed', () => {

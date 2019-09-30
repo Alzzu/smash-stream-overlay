@@ -1,16 +1,18 @@
 <template>
   <div is="sui-container" class="settings">
-    <h1>Settings page</h1>
-    <div class="section">
-      <label>SmashGG api key</label>
-      <sui-input v-model="settings.apiKey" type="password" placeholder="xxxxxx" />
-    </div>
-    <div class="section">
-      <label>Twitch</label>
-      <sui-input v-model="settings.twitch" placeholder="xxxxxx" />
-    </div>
+    <sui-segment basic>
+      <sui-header size="large">Settings page</sui-header>
+      <div class="section">
+        <label>SmashGG api key</label>
+        <sui-input v-model="settings.apiKey" type="password" placeholder="xxxxxx" />
+      </div>
+      <div class="section">
+        <label>Twitch</label>
+        <sui-input v-model="settings.twitch" placeholder="not yet implemented" />
+      </div>
 
-    <sui-button v-on:click="saveSettings">Save</sui-button>
+      <sui-button v-on:click="saveSettings" positive>Save</sui-button>
+    </sui-segment>
   </div>
 </template>
 

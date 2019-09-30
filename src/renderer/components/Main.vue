@@ -1,13 +1,13 @@
 <template>
-  <div is="sui-container" class="edit">
+  <div is="sui-container" class="edit" v-if="this.$store.state.Settings.settings.apiKey">
     <sui-segment basic>
       <div class="teams">
         <div class="team1">
-          <Team team="1" :teamData="team1" />
+          <Team team="1" :teamData="team1" :disableIcons="disableIcons" />
         </div>
-
+        <sui-button @click="swapTeams" :style="{'height': '3em'}" primary>Swap</sui-button>
         <div class="team2">
-          <Team team="2" :teamData="team2" />
+          <Team team="2" :teamData="team2" :disableIcons="disableIcons" />
         </div>
       </div>
     </sui-segment>
@@ -19,9 +19,12 @@
     </sui-segment>
     <sui-segment basic aligned="center">
       <sui-button @click="playerData" positive>Update</sui-button>
-      <sui-button @click="resetScore">Reset score</sui-button>
+      <sui-button @click="resetScore" negative>Reset score</sui-button>
     </sui-segment>
   </div>
+  <sui-segment v-else aligned="center">
+    <sui-header color="red" block>Please add SmashGG api key in settings tab</sui-header>
+  </sui-segment>
 </template>
 
 <script>
@@ -81,6 +84,13 @@ export default {
         phase: this.phase,
         disableIcons: this.disableIcons
       })
+    },
+    swapTeams: function() {
+      const team1Data = this.team1
+      const team2Data = this.team2
+      console.log('swap')
+      this.team1 = team2Data
+      this.team2 = team1Data
     },
     changePhase: function(phase) {
       this.phase = phase

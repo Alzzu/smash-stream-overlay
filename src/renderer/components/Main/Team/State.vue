@@ -15,8 +15,10 @@ export default {
       selected: 'none'
     }
   },
-  beforeMount() {
-    this.selected = this.state
+  computed: {
+    currentState() {
+      return this.state
+    }
   },
   methods: {
     changeState: function(event) {
@@ -36,6 +38,12 @@ export default {
   watch: {
     selected: function(newValue, oldValue) {
       this.$emit('update:state', newValue)
+    },
+    currentState: {
+      handler: function(newValue, oldValue) {
+        this.selected = newValue
+      },
+      immediate: true
     }
   }
 }

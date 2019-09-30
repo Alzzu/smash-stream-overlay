@@ -16,7 +16,6 @@ export default {
   },
   watch: {
     value: function(newValue, oldValue) {
-      console.log(newValue)
       this.$emit('changePhase', newValue)
     }
   }

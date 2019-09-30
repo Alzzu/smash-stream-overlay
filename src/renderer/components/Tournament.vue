@@ -1,12 +1,12 @@
 <template>
   <div is="sui-container">
-    <div class="settings">
-      <h1>Tournament Setup</h1>
+    <sui-segment basic class="settings">
+      <sui-header size="large">Tournament Setup</sui-header>
       <div class="section">
         <label>Tournament Slug</label>
         <sui-input v-model="tournamentSlug" />
       </div>
-      <sui-button v-on:click="getTournamentInfo">Get tournament info</sui-button>
+      <sui-button v-on:click="getTournamentInfo" positive>Get tournament info</sui-button>
       <div class="section">
         <label>Tournament Events</label>
         <sui-dropdown
@@ -17,12 +17,7 @@
           v-model="selectedEvent"
         ></sui-dropdown>
       </div>
-    </div>
-    <div v-if="this.$store.state.General.tournamentInfo.name">
-      <span>{{ this.$store.state.General.tournamentInfo.name }}</span>
-      <span>{{ this.$store.state.General.tournamentInfo.startAt }}</span>
-      <span>{{ this.$store.state.General.tournamentInfo.venueName }}</span>
-    </div>
+    </sui-segment>
   </div>
 </template>
 

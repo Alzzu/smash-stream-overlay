@@ -1,9 +1,9 @@
 <template>
   <div class="player">
-    <Character :char="player.character" @changeChar="changeCharacter" />
+    <Character v-if="!disableIcons" :char="player.character" @changeChar="changeCharacter" />
     <sui-dropdown
       :options="this.$store.getters.playersList"
-      placeholder="Select character"
+      placeholder="Select player"
       search
       selection
       v-model="selectedPlayer"
@@ -17,10 +17,7 @@ import Character from './Character'
 export default {
   name: 'player',
   components: { Character },
-  props: ['player', 'team'],
-  beforeMount() {
-    this.selectedPlayer = this.player.name.gamerTag
-  },
+  props: ['player', 'team', 'disableIcons'],
   data: () => {
     return {
       selectedPlayer: null
@@ -34,12 +31,23 @@ export default {
       this.player.character = character
     }
   },
+  computed: {
+    playerTag() {
+      return this.player.name.gamerTag
+    }
+  },
   watch: {
     selectedPlayer: function(newPlayer, oldPlayer) {
       const player = this.$store.state.General.players.filter(
         player => player.gamerTag === newPlayer
       )
       this.player.name = player[0]
+    },
+    playerTag: {
+      handler: function(newValue, oldValue) {
+        this.selectedPlayer = newValue
+      },
+      immediate: true
     }
   }
 }

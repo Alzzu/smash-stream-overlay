@@ -1,7 +1,12 @@
 <template>
   <div class="team">
     <Score :score="teamData.score" @scorePlus="plus" @scoreMinus="minus" />
-    <Player :team="team" :player="teamData.players[0]" @update:name="updateName" />
+    <Player
+      :team="team"
+      :disableIcons="disableIcons"
+      :player="teamData.players[0]"
+      @update:name="updateName"
+    />
     <State :state="teamData.state" @update:state="updateState" />
   </div>
 </template>
@@ -14,7 +19,7 @@ import State from './Team/State'
 export default {
   name: 'team',
   components: { Player, Score, State },
-  props: ['team', 'teamData'],
+  props: ['team', 'teamData', 'disableIcons'],
   methods: {
     plus: function() {
       this.teamData.score++
