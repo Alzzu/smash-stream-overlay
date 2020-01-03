@@ -1,0 +1,174 @@
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+}
+
+.layout {
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  height: 100vh;
+  width: 100%;
+  background: url('../img/hg.png');
+}
+
+.player1 {
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  bottom: 51px;
+  left: 528px;
+  height: 25px;
+  width: 163px;
+}
+.team1score {
+  position: absolute;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  bottom: 51px;
+  left: 699px;
+  width: 25px;
+  height: 25px;
+  font-size: 18px;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.player1Info {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.player1 .name {
+  display: inline-flex;
+  text-align: center;
+  font-size: 1.6em;
+  margin-left: 0.3em;
+  white-space: nowrap;
+}
+.player1 .name .subname {
+  margin-right: 0.3em;
+}
+
+.player1 .score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 30px;
+  font-size: 2em;
+  margin-right: 0.7em;
+}
+
+.player1 .character {
+  font-size: 2em;
+}
+
+.player2 {
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  bottom: 51px;
+  right: 490px;
+  height: 25px;
+  width: 168px;
+}
+
+.team2score {
+  position: absolute;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  bottom: 51px;
+  right: 456px;
+  width: 25px;
+  height: 25px;
+  font-size: 18px;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.player2Info {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  font-size: 11px;
+  font-weight: 400;
+}
+.player2 .name {
+  display: inline-flex;
+  font-size: 1.6em;
+  text-align: center;
+  margin-right: 0.3em;
+  white-space: nowrap;
+}
+
+.player2 .name .subname {
+  margin-left: 0.3em;
+}
+
+.player2 .score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  width: 30px;
+  font-size: 2em;
+  margin-left: 0.7em;
+}
+
+.player2 .character {
+  font-size: 2em;
+}
+
+.sponsortag {
+  font-weight: 700;
+}
+
+.players {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50vw;
+  margin: 0 auto;
+}
+
+img {
+  width: 48px;
+  height: 48px;
+}
+
+.phase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  position: absolute;
+  width: 261px;
+  height: 34px;
+  top: 25px;
+  left: 830px;
+  font-size: 1.4em;
+  font-weight: 500;
+  font-style: italic;
+  text-align: center;
+}
