@@ -12,6 +12,35 @@ body {
   background: url('../img/hgtauko.png');
 }
 
+.player1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 260px;
+  height: 72px;
+  top: 927px;
+  left: 664px;
+  font-size: 1.4em;
+}
+
+.player2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 260px;
+  height: 72px;
+  top: 927px;
+  left: 996px;
+  font-size: 1.4em;
+}
+
+.sponsor {
+  font-weight: 800;
+  margin-right: 5px;
+}
+
 .phase {
   display: flex;
   align-items: center;

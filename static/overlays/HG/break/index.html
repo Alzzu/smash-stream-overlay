@@ -15,6 +15,20 @@
   </head>
   <body>
     <div id="app" class="layout">
+      <div class="player1">
+        <span v-if="team1.players[0].name.prefix">
+          <span class="sponsor">{{ team1.players[0].name.prefix }}</span
+          ><span>| {{team1.players[0].name.gamerTag }}</span>
+        </span>
+        <span v-else>{{team1.players[0].name.gamerTag }}</span>
+      </div>
+      <div class="player2">
+        <span v-if="team2.players[0].name.prefix">
+          <span class="sponsor">{{ team2.players[0].name.prefix }}</span
+          ><span>| {{team2.players[0].name.gamerTag }}</span>
+        </span>
+        <span v-else>{{team2.players[0].name.gamerTag }}</span>
+      </div>
       <div class="phase">{{ phase }}</div>
     </div>
 
