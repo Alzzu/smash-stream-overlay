@@ -1,11 +1,17 @@
 <template>
-  <div is="sui-container" class="edit" v-if="this.$store.state.Settings.settings.apiKey">
+  <div
+    is="sui-container"
+    class="edit"
+    v-if="this.$store.state.Settings.settings.apiKey"
+  >
     <sui-segment basic>
       <div class="teams">
         <div class="team1">
           <Team team="1" :teamData="team1" :disableIcons="disableIcons" />
         </div>
-        <sui-button @click="swapTeams" :style="{'height': '3em'}" primary>Swap</sui-button>
+        <sui-button @click="swapTeams" :style="{ height: '3em' }" primary
+          >Swap</sui-button
+        >
         <div class="team2">
           <Team team="2" :teamData="team2" :disableIcons="disableIcons" />
         </div>
@@ -15,7 +21,10 @@
       <Phase :phase="phase" @changePhase="changePhase" />
     </sui-segment>
     <sui-segment basic aligned="center">
-      <Toggles @update:disableIcons="changeDisableIcon" :disableIcons="disableIcons" />
+      <Toggles
+        @update:disableIcons="changeDisableIcon"
+        :disableIcons="disableIcons"
+      />
     </sui-segment>
     <sui-segment basic aligned="center">
       <sui-button @click="playerData" positive>Update</sui-button>
@@ -23,7 +32,9 @@
     </sui-segment>
   </div>
   <sui-segment v-else aligned="center">
-    <sui-header color="red" block>Please add SmashGG api key in settings tab</sui-header>
+    <sui-header color="red" block
+      >Please add SmashGG api key in settings tab</sui-header
+    >
   </sui-segment>
 </template>
 
@@ -106,6 +117,15 @@ export default {
   sockets: {
     connect: function() {
       console.log('socket connected')
+    },
+    playerDataReceived: function() {
+      console.log('Player data confirmation')
+      this.$notify({
+        group: 'info',
+        type: 'success',
+        title: 'Player Data',
+        text: 'Player data updated successfully'
+      })
     }
   }
 }

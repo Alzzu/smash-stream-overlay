@@ -2,6 +2,7 @@ import Vue from 'vue'
 import axios from 'axios'
 import SuiVue from 'semantic-ui-vue'
 import VueSocketIO from 'vue-socket.io'
+import Notifications from 'vue-notification'
 
 import db from './datastore'
 
@@ -19,6 +20,7 @@ Vue.prototype.$db = db
 Vue.prototype.$appName = 'My App'
 
 Vue.use(SuiVue)
+Vue.use(Notifications)
 
 Vue.use(
   new VueSocketIO({

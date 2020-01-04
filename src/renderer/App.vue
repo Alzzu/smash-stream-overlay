@@ -2,6 +2,7 @@
   <div id="app">
     <Nav></Nav>
     <router-view></router-view>
+    <notifications group="info" />
   </div>
 </template>
 

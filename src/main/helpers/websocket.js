@@ -18,6 +18,7 @@ io.on('connection', socket => {
 
   socket.on('playerData', msg => {
     store.dispatch('setCurrentData', msg)
+    socket.emit('playerDataReceived')
     socket.broadcast.emit('info', msg)
   })
 
