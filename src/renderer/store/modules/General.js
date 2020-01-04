@@ -140,11 +140,15 @@ const getters = {
         stream: queue.stream.streamName,
         sets: queue.sets.map(set => ({
           ...set,
-          slots: set.slots.map(slot => ({
-            entrants: slot.entrant.participants.map(participant => ({
-              ...participant
-            }))
-          }))
+          slots: set.slots.map(slot =>
+            slot.entrant
+              ? {
+                entrants: slot.entrant.participants.map(participant => ({
+                  ...participant
+                }))
+              }
+              : null
+          )
         }))
       }))
     } catch (err) {

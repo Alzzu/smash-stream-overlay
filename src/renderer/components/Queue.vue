@@ -14,10 +14,13 @@
               <sui-card-meta>{{set.event.name}}</sui-card-meta>
               <sui-card-description>
                 <div :key="index" v-for="(slot, name, index) in set.slots">
-                  <div
-                    :key="index"
-                    v-for="(entrant, name, index) in slot.entrants"
-                  >{{ entrant.gamerTag }}</div>
+                  <div v-if="slot">
+                    <div
+                      :key="index"
+                      v-for="(entrant, name, index) in slot.entrants"
+                    >{{ entrant.gamerTag }}</div>
+                  </div>
+
                   <span v-if="index === 0">vs</span>
                 </div>
               </sui-card-description>
