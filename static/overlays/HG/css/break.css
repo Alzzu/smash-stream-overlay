@@ -12,6 +12,14 @@ body {
   background: url('../img/hgtauko.png');
 }
 
+.long {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  font-size: 0.9em;
+  text-align: left;
+}
+
 .player1 {
   display: flex;
   align-items: center;

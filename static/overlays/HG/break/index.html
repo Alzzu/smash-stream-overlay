@@ -17,15 +17,25 @@
     <div id="app" class="layout">
       <div class="player1">
         <span v-if="team1.players[0].name.prefix">
-          <span class="sponsor">{{ team1.players[0].name.prefix }}</span
-          ><span>| {{team1.players[0].name.gamerTag }}</span>
+          <div v-if="longSponsor1" class="long">
+            <span class="sponsor">{{ team1.players[0].name.prefix }}</span>{{
+            team1.players[0].name.gamerTag }}
+          </div>
+          <div v-else>
+            <span class="sponsor">{{ team1.players[0].name.prefix }}</span>{{' | ' + team1.players[0].name.gamerTag }}
+          </div>
         </span>
         <span v-else>{{team1.players[0].name.gamerTag }}</span>
       </div>
       <div class="player2">
         <span v-if="team2.players[0].name.prefix">
-          <span class="sponsor">{{ team2.players[0].name.prefix }}</span
-          ><span>| {{team2.players[0].name.gamerTag }}</span>
+          <div v-if="longSponsor2" class="long">
+            <span class="sponsor">{{ team2.players[0].name.prefix }}</span>{{
+            team2.players[0].name.gamerTag }}
+          </div>
+          <div v-else>
+            <span class="sponsor">{{ team2.players[0].name.prefix }}</span>{{' | ' + team2.players[0].name.gamerTag }}
+          </div>
         </span>
         <span v-else>{{team2.players[0].name.gamerTag }}</span>
       </div>
