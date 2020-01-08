@@ -11,6 +11,16 @@ body {
   width: 100%;
   background: url('../img/hg.png');
 }
+.long {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  font-size: 0.8em;
+  text-align: left;
+}
+
+.longName {
+}
 
 .player1 {
   color: black;

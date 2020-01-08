@@ -68,6 +68,24 @@ var vm = new Vue({
       this.player2CharacterUrl = this.characterIcon(2, newVal)
     }
   },
+  computed: {
+    longSponsor1: function() {
+      if (this.team1.players[0].name.prefix) {
+        if (this.team1.players[0].name.prefix.length > 4) {
+          return true
+        } else return false
+      }
+      return false
+    },
+    longSponsor2: function() {
+      if (this.team2.players[0].name.prefix) {
+        if (this.team2.players[0].name.prefix.length > 4) {
+          return true
+        } else return false
+      }
+      return false
+    }
+  },
   sockets: {
     connect: function() {
       console.log('connected to socket')

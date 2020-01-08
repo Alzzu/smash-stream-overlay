@@ -18,8 +18,10 @@
           <div class="player1Info">
             <div class="name" v-if="team1.players">
                 <span class="subname" v-for="(player, key) in team1.players"> 
-                    <span  v-if="player.name.prefix"
-                      ><span class="sponsortag">{{ player.name.prefix }}</span>{{' | ' + player.name.gamerTag }}</span>
+                    <span  v-if="player.name.prefix">
+                      <div v-if="longSponsor1" class="long"><span class="sponsortag">{{ player.name.prefix }}</span>{{ player.name.gamerTag }}</div>
+                      <div v-else><span class="sponsortag">{{ player.name.prefix }}</span>{{' | ' + player.name.gamerTag }} </div>
+                    </span>
                     <span v-else>{{ player.name.gamerTag }}</span>
                     <span v-if="key !== team1.players.length - 1">/</span>
     
@@ -34,13 +36,13 @@
         <div class="player2" v-if="team2">
           <div class="player2Info">
             <div class="name" v-if="team2.players">
-              <span class="subname" v-for="(player, key) in team2.players"> 
-                  <span  v-if="player.name.prefix">
-                    <span class="sponsortag">{{ player.name.prefix }}</span>{{' | ' + player.name.gamerTag }}
-                  </span>
+              <span class="subname" v-for="(player, key) in team2.players">
+                <span  v-if="player.name.prefix">
+                  <div v-if="longSponsor2" class="long"><span class="sponsortag">{{ player.name.prefix }}</span>{{' | ' + player.name.gamerTag }}</div>
+                  <div v-else><span class="sponsortag">{{ player.name.prefix }}</span>{{' | ' + player.name.gamerTag }} </div>
+                </span>
                 <span v-else>{{ player.name.gamerTag }}</span>
                 <span v-if="key !== team2.players.length - 1">/</span>
-
               </span>
             <span v-if="team2.state === 'losers'">(L)</span>
             <span v-else-if="team2.state === 'winners'">(W)</span>
