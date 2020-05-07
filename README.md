@@ -1,6 +1,8 @@
-# smash-overlay-electron
+# Smash stream overlay
 
-> Application for managing stream overlays
+> This is program for handling stream graphics for smash tournaments. Integrates with smash.gg.
+
+Main goal of this program is to simplify process of updating stream graphics during livestream. All players of the tournament are automatically retrieved from smash.gg including Sponsor tags, Country, Twitter...
 
 #### Build Setup
 
@@ -19,7 +21,3 @@ npm run build
 npm run lint
 
 ```
-
----
-
-This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue)@[8fae476](https://github.com/SimulatedGREG/electron-vue/tree/8fae4763e9d225d3691b627e83b9e09b56f6c935) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
