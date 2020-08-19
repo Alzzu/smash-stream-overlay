@@ -89,7 +89,6 @@ export const eventEntrants = async id => {
                   id
                   gamerTag
                   prefix
-                  createdAt
                   contactInfo {
                     id
                     country
